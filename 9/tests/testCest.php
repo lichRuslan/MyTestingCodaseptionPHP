@@ -1,7 +1,7 @@
 <?php
 
 
-class FirstCest
+class testCest
 {
     public function _before(AcceptanceTester $I)
     {
@@ -164,11 +164,6 @@ class FirstCest
         $I->selectOption('select.status','Неактивный');
         sleep(1);
         
-    }
-
-    public function close (AcceptanceTester $I){
-        $I-> click('span.menu');
-        $I-> click('span.remove-user-btn-text');
     }
 
 }
