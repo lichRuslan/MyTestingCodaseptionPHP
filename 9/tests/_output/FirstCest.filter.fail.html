@@ -1,40 +1,526 @@
 <!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head>
-    <title>App crashing</title>
-    <style type="text/css">
-      body { margin: 0; }
-      h3 {
-        margin: 0;
-        font-family: sans-serif;
-        padding: 20px 10px 10px 10px;
-        background: #eee;
-      }
-      pre { margin: 20px; }
-    </style>
-  </head>
+  <link rel="stylesheet" type="text/css" class="__meteor-css__" href="/merged-stylesheets.css?hash=304b4143535fb95d335df33960f6ce7a56cf0418" />
 
-  <body>
-    <h3>Your app is crashing. Here's the latest log:</h3>
 
-    <pre>/home/kai/.meteor/packages/meteor-tool/.1.7.0_3.gkwgd5.mhg2e++os.linux.x86_64+web.browser+web.browser.legacy+web.cordova/mt-os.linux.x86_64/dev_bundle/server-lib/node_modules/fibers/future.js:313
-						throw(ex);
-						^
-MongoNetworkError: failed to connect to server [192.168.0.185:27017] on first connect [MongoNetworkError: connect ECONNREFUSED 192.168.0.185:27017]
-    at Pool.&lt;anonymous&gt; (/home/kai/.meteor/packages/npm-mongo/.3.0.7.kcwiar.x71y++os+web.browser+web.browser.legacy+web.cordova/npm/node_modules/mongodb-core/lib/topologies/server.js:505:11)
-    at emitOne (events.js:116:13)
-    at Pool.emit (events.js:211:7)
-    at Connection.&lt;anonymous&gt; (/home/kai/.meteor/packages/npm-mongo/.3.0.7.kcwiar.x71y++os+web.browser+web.browser.legacy+web.cordova/npm/node_modules/mongodb-core/lib/connection/pool.js:329:12)
-    at Object.onceWrapper (events.js:317:30)
-    at emitTwo (events.js:126:13)
-    at Connection.emit (events.js:214:7)
-    at Socket.&lt;anonymous&gt; (/home/kai/.meteor/packages/npm-mongo/.3.0.7.kcwiar.x71y++os+web.browser+web.browser.legacy+web.cordova/npm/node_modules/mongodb-core/lib/connection/connection.js:245:50)
-    at Object.onceWrapper (events.js:315:30)
-    at emitOne (events.js:116:13)
-    at Socket.emit (events.js:211:7)
-    at emitErrorNT (internal/streams/destroy.js:64:8)
-    at _combinedTickCallback (internal/process/next_tick.js:138:11)
-    at process._tickDomainCallback (internal/process/next_tick.js:218:9)
-Exited with code: 1
-Your application is crashing. Waiting for file change.
-</pre>
+<style type="text/css"></style><style type="text/css">@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.logo {
+  width: 158px;
+  margin: 0 auto;
+  margin-top: 27px;
+}
+.list_header {
+  text-transform: uppercase;
+  font-weight: lighter;
+}
+.user-info {
+  position: absolute;
+  bottom: 20px;
+  align-self: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+.user-info .user-login-wrapper {
+  max-width: 150px;
+  margin-left: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.user-info .user-login-wrapper span {
+  line-height: 30px;
+}
+.user-info .user-btn-wrapper span {
+  line-height: 30px;
+}
+.user_icon {
+  display: inline-block;
+  padding: 7px;
+  color: #fff;
+  border-radius: 5px;
+  background: #bdc0c5;
+}
+.menu-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 5px;
+}
+.menu-wrapper .menu {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+.menu-wrapper .menu .tooltiptext-menu {
+  visibility: hidden;
+  width: 154px;
+  height: 48px;
+  background-color: #fff;
+  top: -50px;
+  color: #021023;
+  text-align: center;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  margin-left: -67px;
+  display: none;
+  transition: opacity 0.3s;
+  box-shadow: 3px 3px 10px #888;
+}
+.menu-wrapper .menu .tooltiptext-menu .fa-sign-out {
+  line-height: 40px;
+}
+.menu-wrapper .menu .tooltiptext-menu::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #fff transparent transparent transparent;
+}
+.menu-wrapper .menu .tooltiptext-menu.show-menu {
+  visibility: visible;
+  display: block;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+@-moz-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+</style></head>
+<body>
+  <script type="text/javascript">__meteor_runtime_config__ = JSON.parse(decodeURIComponent("%7B%22meteorRelease%22%3A%22METEOR%401.7.0.3%22%2C%22meteorEnv%22%3A%7B%22NODE_ENV%22%3A%22development%22%2C%22TEST_METADATA%22%3A%22%7B%7D%22%7D%2C%22PUBLIC_SETTINGS%22%3A%7B%7D%2C%22ROOT_URL%22%3A%22http%3A%2F%2F192.168.0.111%3A3000%2F%22%2C%22ROOT_URL_PATH_PREFIX%22%3A%22%22%2C%22appId%22%3A%22e6s0b4v8wpvf.jqnof2xuc3qe%22%2C%22autoupdateVersion%22%3A%226e51e322c293f6059eb4ae16b2e648c3b4461a9f%22%2C%22autoupdateVersionRefreshable%22%3A%2297756d97053e34015fd70434ce627322a6024a86%22%2C%22autoupdateVersionCordova%22%3A%22none%22%2C%22isModern%22%3Atrue%7D"))</script>
+
+  <script type="text/javascript" src="/packages/meteor.js?hash=c8108d734cc548d91539b054e14b613d0c4512cc"></script>
+  <script type="text/javascript" src="/packages/meteor-base.js?hash=0180104c055a5b9b632e49dbcf669f3e85e0829a"></script>
+  <script type="text/javascript" src="/packages/mobile-experience.js?hash=d972574740885ebc90d0cf457bac918b8c4e9627"></script>
+  <script type="text/javascript" src="/packages/modules-runtime.js?hash=59942621baf2d3ff23916a0f601008fd2e310b63"></script>
+  <script type="text/javascript" src="/packages/modules.js?hash=728a476be13772fd32396522d0a1f4948bb0c3b8"></script>
+  <script type="text/javascript" src="/packages/modern-browsers.js?hash=2f0f8e122b18f2a552d0633ebd59dbc1359e78cb"></script>
+  <script type="text/javascript" src="/packages/babel-compiler.js?hash=70fc26c6c7dc707b63b03b4fed8f0493f1f6f50b"></script>
+  <script type="text/javascript" src="/packages/ecmascript.js?hash=d72e1e42e0f96668a94070ef58b6e4eef8f948c9"></script>
+  <script type="text/javascript" src="/packages/ecmascript-runtime.js?hash=0b0630a8e3876158a622073f308de6885b7cd8b9"></script>
+  <script type="text/javascript" src="/packages/babel-runtime.js?hash=ad2513735fa8d9d75196ab30ea0bd927586919be"></script>
+  <script type="text/javascript" src="/packages/promise.js?hash=badbb15e6daa4c8fb4dcd6049286a198af5008b4"></script>
+  <script type="text/javascript" src="/packages/url.js?hash=b17f76f223e6c33b3a66db77c8e2fe550a0bad4d"></script>
+  <script type="text/javascript" src="/packages/http.js?hash=d3dd208935f8ca87ff86948a53498046333fdb3b"></script>
+  <script type="text/javascript" src="/packages/dynamic-import.js?hash=312c0eb49ce5f723225219decced83bc8dd021ec"></script>
+  <script type="text/javascript" src="/packages/es5-shim.js?hash=58f6bd3ca35ce16465a64a7de292ad5e20b7e463"></script>
+  <script type="text/javascript" src="/packages/ecmascript-runtime-client.js?hash=3755b87a9db33c177a60cfa7cbf41e1d9033df6f"></script>
+  <script type="text/javascript" src="/packages/base64.js?hash=faed986c6955587c13cda25dc9a4f102b9f22674"></script>
+  <script type="text/javascript" src="/packages/ejson.js?hash=8f5a52821d627c13f03f6c9f8691f2a0bc0831a4"></script>
+  <script type="text/javascript" src="/packages/diff-sequence.js?hash=8eb896b9c63d4d9f25df3e753db9cb6e8b3af35f"></script>
+  <script type="text/javascript" src="/packages/geojson-utils.js?hash=9fb624fd53e827248a46955fc6a188dfe4f38306"></script>
+  <script type="text/javascript" src="/packages/id-map.js?hash=c9490b09a1a1d5375a52ce03119140ba81be8bf1"></script>
+  <script type="text/javascript" src="/packages/random.js?hash=4e647356c7e32999dba2a8addb95400243528bb0"></script>
+  <script type="text/javascript" src="/packages/mongo-id.js?hash=a1be6d230d8c489a687edf8bf9a64e520b34d3aa"></script>
+  <script type="text/javascript" src="/packages/ordered-dict.js?hash=d6e5219c163c4774a73956f410e7c2565d39634b"></script>
+  <script type="text/javascript" src="/packages/tracker.js?hash=5959317d7a0f1bc4d8f23ac6af69bd6d78e7b2ce"></script>
+  <script type="text/javascript" src="/packages/minimongo.js?hash=9ca66a0b51f0ab247c69fb7f1b9cbc8de221abaf"></script>
+  <script type="text/javascript" src="/packages/check.js?hash=03574af9b5218423b2e7b6d9bae433f2573596f1"></script>
+  <script type="text/javascript" src="/packages/retry.js?hash=2d5eb7caf513b973780e0d80dbbdc0df16d6dd3a"></script>
+  <script type="text/javascript" src="/packages/callback-hook.js?hash=6a38b86e781d45ae0a606d2a6def910c47fe1d13"></script>
+  <script type="text/javascript" src="/packages/ddp-common.js?hash=96087f3a31518f03b650bc3a210af291022bd749"></script>
+  <script type="text/javascript" src="/packages/reload.js?hash=1404b4f6c8537cfd3aab0f7ec0dc4bac698f60ea"></script>
+  <script type="text/javascript" src="/packages/socket-stream-client.js?hash=0a7102102e72089e1be37f8847071b4c13ee93a0"></script>
+  <script type="text/javascript" src="/packages/ddp-client.js?hash=7fae7e488e45468ea4fda5047b1baf99d39dfd73"></script>
+  <script type="text/javascript" src="/packages/ddp.js?hash=dae39f35e2956c6df4d8b9963eea38371d546176"></script>
+  <script type="text/javascript" src="/packages/ddp-server.js?hash=e223ea6838454ff7911f92e94a6776f469ecdd86"></script>
+  <script type="text/javascript" src="/packages/allow-deny.js?hash=38f77ee2f5b9c7d3fe6074e68b10ac22cf390925"></script>
+  <script type="text/javascript" src="/packages/mongo-dev-server.js?hash=b0d3e5c65cc159fb99b99b78e94b31117a4f27dd"></script>
+  <script type="text/javascript" src="/packages/insecure.js?hash=376d72a04b9c631f965b097d00d66e737a68a83d"></script>
+  <script type="text/javascript" src="/packages/mongo.js?hash=0adba175af55a5540610d103c421dec2a6b2c022"></script>
+  <script type="text/javascript" src="/packages/blaze-html-templates.js?hash=a708f196d92ee052ed42df1f8d9071d3bc189323"></script>
+  <script type="text/javascript" src="/packages/reactive-var.js?hash=9f198731db45dae3de53bd7103e01e9421173e40"></script>
+  <script type="text/javascript" src="/packages/standard-minifier-css.js?hash=aa0c85de60fbfb6f70547adf05dfdadec5662dd6"></script>
+  <script type="text/javascript" src="/packages/standard-minifier-js.js?hash=c01d59f5db2a34f8efd70e6ad29591e0e31e7cac"></script>
+  <script type="text/javascript" src="/packages/shell-server.js?hash=36a44317c7503a912dd277b1a73dbd5e3c8cda05"></script>
+  <script type="text/javascript" src="/packages/autopublish.js?hash=ee18a5df3846f23f6eb57c7a10c699edd8a317b5"></script>
+  <script type="text/javascript" src="/packages/underscore.js?hash=884c0f04552531e604be5ca6d94381bbf1550f5c"></script>
+  <script type="text/javascript" src="/packages/reactive-dict.js?hash=8d78ca6e220b7078aa5ae76ea38c3fbe1f2641be"></script>
+  <script type="text/javascript" src="/packages/session.js?hash=0924da7b9d82f6c95b0c4eb141db786031915834"></script>
+  <script type="text/javascript" src="/packages/kadira_flow-router.js?hash=9028c4c1cc6e56062bd5c1c3c2e96ab23301ecb7"></script>
+  <script type="text/javascript" src="/packages/coffeescript.js?hash=10de969264198553872816096c4973cb4ff04f86"></script>
+  <script type="text/javascript" src="/packages/deps.js?hash=8dd5bf14c21ee50b5a8e56bbba9b6df7da0d9db6"></script>
+  <script type="text/javascript" src="/packages/jquery.js?hash=e15504227515793c40a6a3a8ad340399cb657500"></script>
+  <script type="text/javascript" src="/packages/observe-sequence.js?hash=5da2e60ce61e074a6463979f3992dd5bac41b43d"></script>
+  <script type="text/javascript" src="/packages/htmljs.js?hash=66c4fe583b65fd634fd9bd550c9a701a27b45a7a"></script>
+  <script type="text/javascript" src="/packages/blaze.js?hash=a1ff2d6d5ecd59ee11e2ba260b8650a9d1140f59"></script>
+  <script type="text/javascript" src="/packages/ui.js?hash=73201242e628677db1e85e5024826e6b9b4ede91"></script>
+  <script type="text/javascript" src="/packages/spacebars.js?hash=547cf8e466d1d52603d19bd5f48fb5df184fd237"></script>
+  <script type="text/javascript" src="/packages/templating-compiler.js?hash=bbfa4e036fd01e80e52aa0778d35051e34769351"></script>
+  <script type="text/javascript" src="/packages/templating-runtime.js?hash=0d383d6c0c2772772a6e7c4451eca7cb8f6a7559"></script>
+  <script type="text/javascript" src="/packages/templating.js?hash=f2c84fce6d8b04d2702ff547986293031866f706"></script>
+  <script type="text/javascript" src="/packages/iron_core.js?hash=f9a016e89c00484c0414ba0c3f75d17c95238777"></script>
+  <script type="text/javascript" src="/packages/iron_dynamic-template.js?hash=62f91ed5834928c0254b14ed86b5efae28b03389"></script>
+  <script type="text/javascript" src="/packages/iron_layout.js?hash=ba6039f387d98b1d19fa301c2962fd7b9e7d43f9"></script>
+  <script type="text/javascript" src="/packages/iron_url.js?hash=b0b4844abe30d07e56463bc65a2ed39bf80b6ed8"></script>
+  <script type="text/javascript" src="/packages/iron_middleware-stack.js?hash=0209544ffaf64fce7f891fcce52510851380c75a"></script>
+  <script type="text/javascript" src="/packages/iron_location.js?hash=ffeb7c0e5842df4ea196ac197332ff91d65c9221"></script>
+  <script type="text/javascript" src="/packages/iron_controller.js?hash=59105bce5be03588a7d65f9eaf068a632246be40"></script>
+  <script type="text/javascript" src="/packages/iron_router.js?hash=0266e6aaa7cb3eef37db8c36c9ecc86aece007c9"></script>
+  <script type="text/javascript" src="/packages/zimme_active-route.js?hash=f6967305e260d2a2d3ca0350168a4f35c1fbc0bc"></script>
+  <script type="text/javascript" src="/packages/kadira_blaze-layout.js?hash=1588fc45712b30ca475a679736f50b470720ac4a"></script>
+  <script type="text/javascript" src="/packages/raix_eventemitter.js?hash=4885ec4caa7f4d74ebb64d9fac5ec912b873ce4a"></script>
+  <script type="text/javascript" src="/packages/tmeasday_check-npm-versions.js?hash=650f4b079080dfef5e50011c0b63762a6fc486c0"></script>
+  <script type="text/javascript" src="/packages/aldeed_collection2-core.js?hash=6b0c8b85d1def1853cac34f57b7fa0420f6f9307"></script>
+  <script type="text/javascript" src="/packages/aldeed_simple-schema.js?hash=dd1ae602f92c8a2449ed4bbab7f3bdb7d91010cb"></script>
+  <script type="text/javascript" src="/packages/livedata.js?hash=9ea2794795436b9e3896f3bcb0a59cc1e4bddc63"></script>
+  <script type="text/javascript" src="/packages/momentjs_moment.js?hash=a8f207ea675df6abf5059d173099534f37ba7633"></script>
+  <script type="text/javascript" src="/packages/aldeed_autoform.js?hash=aa09e0a20f5de38460abbe1f528feef1d34a73ca"></script>
+  <script type="text/javascript" src="/packages/stolinski_stylus-multi.js?hash=4aa84f33698c7d90382ac50e37bdf988e4da4d18"></script>
+  <script type="text/javascript" src="/packages/fortawesome_fontawesome.js?hash=4869f4c768241a33e8c9f95796ea4585af21a479"></script>
+  <script type="text/javascript" src="/packages/ddp-rate-limiter.js?hash=8da38f36842be7d93edaaaeb8a3696e61aae284b"></script>
+  <script type="text/javascript" src="/packages/localstorage.js?hash=9e6b5b17cb648386cf69d1fff225bdf6c960317d"></script>
+  <script type="text/javascript" src="/packages/accounts-base.js?hash=074cec43f8a104b136cf3a8fba686c6a5b470acd"></script>
+  <script type="text/javascript" src="/packages/sha.js?hash=908fd819e631f3400f2f23afb3a4af3aae9e37e1"></script>
+  <script type="text/javascript" src="/packages/srp.js?hash=e2593a4035e22532dc04e8e6c2ef0070319842a3"></script>
+  <script type="text/javascript" src="/packages/accounts-password.js?hash=e789b7891e9ce767d04c321654877c94bbce4ef9"></script>
+  <script type="text/javascript" src="/packages/alanning_roles.js?hash=a54a6feed3cf79dfe29122d3d32ea075c4f3dd01"></script>
+  <script type="text/javascript" src="/packages/snowbreeze_auth-client-callbacks.js?hash=b8823f1aa0024a6afecfa881385b5ec01ab53673"></script>
+  <script type="text/javascript" src="/packages/stylus.js?hash=c7f01ecc6435c26431b167930134dbde64d87da1"></script>
+  <script type="text/javascript" src="/packages/rzymek_moment-locale-ru.js?hash=668fa91dbd729c851dea6790fe073d3d720560b5"></script>
+  <script type="text/javascript" src="/packages/lai_collection-extensions.js?hash=3c7218d278e8d69be644f831afd44f6dc756d5b9"></script>
+  <script type="text/javascript" src="/packages/dburles_mongo-collection-instances.js?hash=e613e05d5c899b737ffde5509f89b820051ca0ee"></script>
+  <script type="text/javascript" src="/packages/kevohagan_sweetalert.js?hash=ecf556a01eeb4f70b4545923b23d8b1c8ba0f9ab"></script>
+  <script type="text/javascript" src="/packages/lfergon_exportcsv.js?hash=d31b2b06ecb13b3d5dfdec94f19be7b2c5161b9a"></script>
+  <script type="text/javascript" src="/packages/harrison_papa-parse.js?hash=ecc57c9365218590e19b21f02f4ce7a5ec2b3be8"></script>
+  <script type="text/javascript" src="/packages/sacha_spin.js?hash=a0d697dff983be0973e2966187e2fc2860e7d81b"></script>
+  <script type="text/javascript" src="/packages/webapp.js?hash=7edac9184f1652211565c289897ec661ea5b14e2"></script>
+  <script type="text/javascript" src="/packages/hot-code-push.js?hash=97ea387643d5eaf40b5d0ae7becf317e82b70d89"></script>
+  <script type="text/javascript" src="/packages/launch-screen.js?hash=cbcad55cc58278a0ec0a580e1dfc4582ed0f6c91"></script>
+  <script type="text/javascript" src="/packages/autoupdate.js?hash=a2d41eedec64393031df5956eb5105b9ecfc0531"></script>
+  <script type="text/javascript" src="/app/global-imports.js?hash=a380e18177c5b8b387ce1c742e45e10a5d21a75e"></script>
+  <script type="text/javascript" src="/app/app.js?hash=742ba0306c2467d5ea7939f9c12a49ca66675563"></script>
+  <script type="text/javascript" src="/packages/service-configuration.js?hash=208fb9e31f62e02cfd404cde75672b80778161aa"></script>
+
+
+
+<div id="__blaze-root"><div class="l-wrapper">
+        <nav class="l-nav_bar">
+        <svg class="logo" width="158" height="16" viewBox="0 0 158 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#021023" fill-rule="evenodd" clip-rule="evenodd" d="M46.9033 6.48713L50.7354 3.15953C51.3281 2.64488 52.2356 2.69703 52.7624 3.27601C53.2892 3.85499 53.2359 4.74154 52.6432 5.25619L49.5526 7.93989L55.985 13.4382C56.5818 13.9483 56.6422 14.8344 56.1201 15.4174C55.5979 16.0003 54.6908 16.0594 54.094 15.5493L46.9033 9.40283V14.4937C46.9033 15.2684 46.2604 15.8963 45.4675 15.8963C44.6745 15.8963 44.0317 15.2684 44.0317 14.4937V1.40262C44.0317 0.627977 44.6745 2.74407e-06 45.4675 2.74407e-06C46.2604 2.74407e-06 46.9033 0.627977 46.9033 1.40262V6.48713ZM88.5416 2.74407e-06H93.3276C95.9709 2.74407e-06 98.1136 2.09325 98.1136 4.6754C98.1136 6.37821 97.1818 7.8684 95.7891 8.68588L98.4406 13.8665C98.7953 14.5593 98.5078 15.4018 97.7985 15.7483C97.0893 16.0947 96.2268 15.8139 95.8722 15.121L92.9188 9.35079H89.9774V10.2859C89.9774 11.0605 89.3346 11.6885 88.5416 11.6885C87.7486 11.6885 87.1058 11.0605 87.1058 10.2859V1.40262C87.1058 0.627977 87.7486 2.74407e-06 88.5416 2.74407e-06ZM65.0898 15.8963C64.2968 15.8963 63.654 15.2684 63.654 14.4937C63.654 13.7191 64.2968 13.0911 65.0898 13.0911C65.8828 13.0911 66.5256 13.7191 66.5256 14.4937C66.5256 15.2684 65.8828 15.8963 65.0898 15.8963ZM28.7161 9.35079C27.9231 9.35079 27.2803 8.72282 27.2803 7.94817C27.2803 7.17353 27.9231 6.54555 28.7161 6.54555C29.5091 6.54555 30.1519 7.17353 30.1519 7.94817C30.1519 8.72282 29.5091 9.35079 28.7161 9.35079ZM55.0392 2.80524C54.2462 2.80524 53.6034 2.17726 53.6034 1.40262C53.6034 0.627974 54.2462 0 55.0392 0C55.8321 0 56.475 0.627974 56.475 1.40262C56.475 2.17726 55.8321 2.80524 55.0392 2.80524ZM1.4358 15.8963C0.642831 15.8963 0 15.2684 0 14.4937C0 13.7191 0.642831 13.0911 1.4358 13.0911C2.22878 13.0911 2.87161 13.7191 2.87161 14.4937C2.87161 15.2684 2.22878 15.8963 1.4358 15.8963ZM88.5413 15.8963C87.7483 15.8963 87.1055 15.2684 87.1055 14.4937C87.1055 13.7191 87.7483 13.0911 88.5413 13.0911C89.3342 13.0911 89.9771 13.7191 89.9771 14.4937C89.9771 15.2684 89.3342 15.8963 88.5413 15.8963ZM107.207 2.80524C106.414 2.80524 105.771 2.17726 105.771 1.40262C105.771 0.627974 106.414 0 107.207 0C108 0 108.643 0.627974 108.643 1.40262C108.643 2.17726 108 2.80524 107.207 2.80524ZM135.444 9.35079C134.651 9.35079 134.008 8.72282 134.008 7.94817C134.008 7.17353 134.651 6.54555 135.444 6.54555C136.237 6.54555 136.88 7.17353 136.88 7.94817C136.88 8.72282 136.237 9.35079 135.444 9.35079ZM153.152 2.80524C152.359 2.80524 151.717 2.17726 151.717 1.40262C151.717 0.627974 152.359 0 153.152 0C153.945 0 154.588 0.627974 154.588 1.40262C154.588 2.17726 153.945 2.80524 153.152 2.80524ZM33.6268 3.30956C33.9125 4.03219 33.5444 4.84423 32.8046 5.1233C32.0649 5.40236 31.2337 5.04278 30.948 4.32015C30.5901 3.41483 29.6965 2.80524 28.6861 2.80524C27.6349 2.80524 26.7133 3.42387 26.4449 4.25989C26.3461 4.56772 26.3093 4.85227 26.3281 5.10602C26.3469 5.35929 26.4208 5.57944 26.5448 5.7673C26.9747 6.41826 26.7829 7.28637 26.1165 7.70627C25.4502 8.12617 24.5615 7.93886 24.1317 7.28789C23.7433 6.69974 23.5172 6.02573 23.464 5.30868C23.4184 4.69327 23.5007 4.0565 23.7049 3.42042C24.3602 1.37917 26.4148 2.74407e-06 28.6861 2.74407e-06C30.8931 2.74407e-06 32.8448 1.33146 33.6268 3.30956ZM30.8882 10.2412C30.4565 9.59143 30.6457 8.72279 31.3108 8.30104C31.976 7.87928 32.8652 8.06413 33.2969 8.7139C33.6944 9.31206 33.9226 9.99917 33.971 10.7302C34.0109 11.3335 33.9279 11.9568 33.7279 12.5796C33.0726 14.6208 31.018 16 28.7467 16C26.5432 16 24.5938 14.6727 23.8095 12.6991C23.5225 11.9769 23.8891 11.1643 24.6283 10.8839C25.3675 10.6035 26.1994 10.9616 26.4864 11.6838C26.8454 12.5871 27.7379 13.1948 28.7467 13.1948C29.7979 13.1948 30.7195 12.5761 30.9879 11.7401C31.0847 11.4386 31.1218 11.1599 31.1054 10.9111C31.0883 10.6538 31.0143 10.431 30.8882 10.2412ZM148.174 1.69637C148.801 1.222 149.703 1.33391 150.188 1.94632C150.674 2.55874 150.559 3.43975 149.932 3.91411C148.651 4.88358 147.888 6.37033 147.888 7.98306C147.888 10.8234 150.245 13.126 153.153 13.126C154.111 13.126 155.028 12.877 155.832 12.4114C156.514 12.0165 157.395 12.2365 157.799 12.903C158.203 13.5694 157.978 14.4298 157.296 14.8247C156.052 15.5452 154.629 15.9312 153.153 15.9312C148.659 15.9312 145.017 12.3727 145.017 7.98306C145.017 5.49332 146.198 3.19161 148.174 1.69637ZM76.7281 15.121L71.3511 4.61546L68.7823 9.94803C68.4446 10.6489 67.5893 10.9498 66.8718 10.6199C66.1543 10.2901 65.8463 9.45448 66.184 8.75356L70.0128 0.805391C70.5233 -0.254387 72.06 -0.272255 72.5962 0.775351L79.2966 13.8665C79.6512 14.5593 79.3637 15.4018 78.6545 15.7483C77.9452 16.0947 77.0828 15.8139 76.7281 15.121ZM13.0742 15.121L7.69711 4.61546L5.12829 9.94803C4.79065 10.6489 3.93529 10.9498 3.21779 10.6199C2.50029 10.2901 2.19236 9.45448 2.53001 8.75356L6.35882 0.805391C6.86934 -0.254387 8.40599 -0.272255 8.94218 0.775351L15.6426 13.8665C15.9972 14.5593 15.7097 15.4018 15.0005 15.7483C14.2912 16.0947 13.4288 15.8139 13.0742 15.121ZM112.95 2.80524V14.4937C112.95 15.2684 112.307 15.8963 111.514 15.8963C110.721 15.8963 110.079 15.2684 110.079 14.4937V1.40262C110.079 0.627977 110.721 2.74407e-06 111.514 2.74407e-06H116.779C117.572 2.74407e-06 118.215 0.627977 118.215 1.40262C118.215 2.17727 117.572 2.80524 116.779 2.80524H112.95ZM135.445 2.74407e-06C136.238 2.74407e-06 136.88 0.627977 136.88 1.40262C136.88 2.17727 136.238 2.80524 135.445 2.80524H126.83C126.037 2.80524 125.394 2.17727 125.394 1.40262C125.394 0.627977 126.037 2.74407e-06 126.83 2.74407e-06H135.445ZM131.137 6.54556C131.93 6.54556 132.573 7.17353 132.573 7.94818C132.573 8.72282 131.93 9.35079 131.137 9.35079H126.83C126.037 9.35079 125.394 8.72282 125.394 7.94818C125.394 7.17353 126.037 6.54556 126.83 6.54556H131.137ZM135.445 13.0911C136.238 13.0911 136.88 13.7191 136.88 14.4937C136.88 15.2684 136.238 15.8963 135.445 15.8963H126.83C126.037 15.8963 125.394 15.2684 125.394 14.4937C125.394 13.7191 126.037 13.0911 126.83 13.0911H135.445ZM89.9774 2.80524V6.54556H93.3276C94.3849 6.54556 95.242 5.70826 95.242 4.6754C95.242 3.64254 94.3849 2.80524 93.3276 2.80524H89.9774Z"/>
+        </svg>
+        <ul>
+            <h3 class="list_header">Рабочая среда</h3>
+                <li><i class="fa fa-bar-chart"></i><a href="/logs">Логирование</a></li>
+                <li><i class="fa fa-ban"></i><a href="/blacklist">Черный список</a></li>
+            <h3 class="list_header">Биллинг</h3>
+                <li><i class="fa fa-bars"></i><a href="/requests">Запросы</a></li>
+                <li><i class="fa fa-book"></i><a href="/billings">Отчет о сверке</a></li>
+            <h3 class="list_header">Настройки</h3>
+                <li><i class="fa fa-user"></i><a href="/users">Операторы</a></li>
+                <!--<li><i class="fa fa-clock-o"></i><a href="#">История действий</a></li>-->
+                <!--<li><i class="fa fa-trash-o"></i><a href="#">Корзина</a></li>-->
+        </ul>
+        <div class="user-info">
+            <div class="user-icon-wrapper">
+                <span class="user_icon">T@</span>
+            </div>
+            <div class="user-login-wrapper">
+                <span>t@t.t</span>
+            </div>
+            <div class="menu-wrapper">
+                <span class="menu">
+                    <svg width="18" height="4" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M4 2C4 3.10458 3.10449 4 2 4C0.895508 4 0 3.10458 0 2C0 0.895416 0.895508 0 2 0C3.10449 0 4 0.895416 4 2ZM11 2C11 3.10458 10.1045 4 9 4C7.89551 4 7 3.10458 7 2C7 0.895416 7.89551 0 9 0C10.1045 0 11 0.895416 11 2ZM16 4C17.1045 4 18 3.10458 18 2C18 0.895416 17.1045 0 16 0C14.8955 0 14 0.895416 14 2C14 3.10458 14.8955 4 16 4Z" fill="#BDC0C5"/>
+                    </svg>
+                    <span class="tooltiptext-menu" id="popup-menu">
+                        <i class="fa fa-sign-out">
+                            <span class="remove-user-btn-text">Выйти</span>
+                        </i>
+                    </span>
+                </span>
+            </div>
+        </div>
+    </nav>
+        <main class="l-main_container">
+            
   
-</body></html>
+    
+    
+    
+    
+        <div class="l-main_header">
+            <h1>Операторы</h1>
+            <div class="container-header">
+                <div class="panel-header">
+                    <div class="input-helpers-wrapper">
+                        <div class="input-item">
+                            <div class="search-wrapper">
+                                <input class="search" type="text" placeholder=" Поиск" />
+                                <span class="icon-search-btn">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="5" cy="5" r="5" transform="translate(1 1)" stroke="#424C5B"/>
+                                        <path d="M0 0L5.5 5.5" transform="translate(9.5 9.5)" stroke="#424C5B"/>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="item-header">
+                            <div class="group-wrapper">
+                                <select class="group">
+                                    <option disabled="">Группа</option>
+                                    <option value="">Все</option>
+                                    <option value="admin">Администратор</option>
+                                    <option value="user">Оператор</option>
+                                </select>
+                                <span class="fa fa-angle-down"></span>
+                            </div>
+                        </div>
+                        <div class="item-header">
+                            <div class="status-wrapper">
+                                <select class="status">
+                                    <option disabled="">Статус</option>
+                                    <option value="">Все</option>
+                                    <option value="active">Активный</option>
+                                    <option value="disabled">Неактивный</option>
+                                </select>
+                                <span class="fa fa-angle-down"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buttons-wrapper">
+        <button class="add-btn">
+            <span class="icon-add-btn">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 0V16M0 8H16" stroke="white"/>
+                </svg>
+            </span> Добавить
+        </button>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div class="l-main_content">
+            <div class="table-wrapper">
+        <div class="header-wrapper">
+        
+            <div class="item header flex-20">
+                Телефон
+            </div>
+        
+            <div class="item header flex-10">
+                Группа
+            </div>
+        
+            <div class="item header flex-5">
+                Статус
+            </div>
+        
+            <div class="item header flex-25">
+                Логин
+            </div>
+        
+            <div class="item header flex-20">
+                Дата изменения
+            </div>
+        
+    </div>
+        <div class="rows-wrapper">
+        
+            <div class="row-wrapper" id="GYTWXjiZivXnDZbTA">
+                
+                    <div class="item row flex-20 phone-wrapper" row="GYTWXjiZivXnDZbTA">
+                        
+                            <span class="phone 123">
+                                123
+                            </span>
+                        
+                    </div>
+                
+                    <div class="item row flex-10 role-wrapper" row="GYTWXjiZivXnDZbTA">
+                        
+                            <span class="role admin">
+                                Администратор
+                            </span>
+                        
+                    </div>
+                
+                    <div class="item row flex-5 active-wrapper" row="GYTWXjiZivXnDZbTA">
+                        
+                            <div class="status-checkbox">
+                                <div class="promoted-checkbox">
+                                    <input class="styled-checkbox promoted-input-checkbox" type="checkbox" id="checkbox-GYTWXjiZivXnDZbTA" row="GYTWXjiZivXnDZbTA" />
+                                    <label for="checkbox-GYTWXjiZivXnDZbTA" class="checkbox-label wrap">
+                                        <svg xmlns="http://www.w3.org/2000/svg"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#checkmark"/></svg>
+                                    </label>
+                                </div>
+                                <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+                                    <symbol id="checkmark" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-miterlimit="10" fill="none" d="M22.9 3.7l-15.2 16.6-6.6-7.1">
+                                        </path>
+                                    </symbol>
+                                </svg>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="item row flex-25 username-wrapper" row="GYTWXjiZivXnDZbTA">
+                        
+                            <span>test</span>
+                        
+                    </div>
+                
+                    <div class="item row flex-20 createdAt-wrapper" row="GYTWXjiZivXnDZbTA">
+                        
+                            <span>25.09.18, 11:34:40</span>
+                        
+                    </div>
+                
+            </div>
+        
+            <div class="row-wrapper" id="vjmyekobp8q8nJ2hY">
+                
+                    <div class="item row flex- phone-wrapper" row="vjmyekobp8q8nJ2hY">
+                        
+                            <span class="phone">
+                                
+                            </span>
+                        
+                    </div>
+                
+                    <div class="item row flex-10 role-wrapper" row="vjmyekobp8q8nJ2hY">
+                        
+                            <span class="role admin">
+                                Администратор
+                            </span>
+                        
+                    </div>
+                
+                    <div class="item row flex-5 active-wrapper" row="vjmyekobp8q8nJ2hY">
+                        
+                            <div class="status-checkbox">
+                                <div class="promoted-checkbox">
+                                    <input class="styled-checkbox promoted-input-checkbox" type="checkbox" id="checkbox-vjmyekobp8q8nJ2hY" row="vjmyekobp8q8nJ2hY" />
+                                    <label for="checkbox-vjmyekobp8q8nJ2hY" class="checkbox-label wrap">
+                                        <svg xmlns="http://www.w3.org/2000/svg"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#checkmark"/></svg>
+                                    </label>
+                                </div>
+                                <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+                                    <symbol id="checkmark" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-miterlimit="10" fill="none" d="M22.9 3.7l-15.2 16.6-6.6-7.1">
+                                        </path>
+                                    </symbol>
+                                </svg>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="item row flex-25 username-wrapper" row="vjmyekobp8q8nJ2hY">
+                        
+                            <span>abi.r@gmail.com</span>
+                        
+                    </div>
+                
+                    <div class="item row flex-20 createdAt-wrapper" row="vjmyekobp8q8nJ2hY">
+                        
+                            <span>25.09.18, 09:09:07</span>
+                        
+                    </div>
+                
+            </div>
+        
+            <div class="row-wrapper" id="MNd7FPc6sDjw28Xfy">
+                
+                    <div class="item row flex- phone-wrapper" row="MNd7FPc6sDjw28Xfy">
+                        
+                            <span class="phone">
+                                
+                            </span>
+                        
+                    </div>
+                
+                    <div class="item row flex-10 role-wrapper" row="MNd7FPc6sDjw28Xfy">
+                        
+                            <span class="role admin">
+                                Администратор
+                            </span>
+                        
+                    </div>
+                
+                    <div class="item row flex-5 active-wrapper" row="MNd7FPc6sDjw28Xfy">
+                        
+                            <div class="status-checkbox">
+                                <div class="promoted-checkbox">
+                                    <input class="styled-checkbox promoted-input-checkbox" type="checkbox" id="checkbox-MNd7FPc6sDjw28Xfy" row="MNd7FPc6sDjw28Xfy" />
+                                    <label for="checkbox-MNd7FPc6sDjw28Xfy" class="checkbox-label wrap">
+                                        <svg xmlns="http://www.w3.org/2000/svg"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#checkmark"/></svg>
+                                    </label>
+                                </div>
+                                <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+                                    <symbol id="checkmark" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-miterlimit="10" fill="none" d="M22.9 3.7l-15.2 16.6-6.6-7.1">
+                                        </path>
+                                    </symbol>
+                                </svg>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="item row flex-25 username-wrapper" row="MNd7FPc6sDjw28Xfy">
+                        
+                            <span>t@t.t</span>
+                        
+                    </div>
+                
+                    <div class="item row flex-20 createdAt-wrapper" row="MNd7FPc6sDjw28Xfy">
+                        
+                            <span>24.09.18, 17:11:52</span>
+                        
+                    </div>
+                
+            </div>
+        
+    </div>
+    </div>
+        </div>
+    
+  
+  
+        </main>
+    </div>
+    </div><div style="width: 600px; margin: 0 auto; padding: 20px;">
+    <div style="font-size: 18pt; color: #999;">
+      Oops, looks like there's no route on the client or the server for url: "http://192.168.0.111:3000/users."
+    </div>
+  </div></body></html>

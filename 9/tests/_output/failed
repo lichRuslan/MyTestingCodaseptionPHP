@@ -1,1 +1,6 @@
 tests/FirstCest.php:RedactionUser
+tests/FirstCest.php:filter
+tests/testCest.php:UpUser
+tests/testCest.php:RemoveUser
+tests/testCest.php:RedactionUser
+tests/testCest.php:filter
